@@ -178,3 +178,39 @@ function getNameFromJSON(obj: string) {
 }
 
 getNameFromJSON(serialized);
+
+// Create interface
+interface Picca extends Drink{
+    name: string;
+    toppings?: number;
+    getAvailableSizes(): string[];
+    [key: number]: string;
+    
+    
+};
+
+interface Drink {
+    sizes: string[];
+}
+
+type getAvailableSizes = () => string[];
+
+let picca: Picca;
+
+function createPicca(name: string, sizes: string[]): Picca {
+    return {
+    name, 
+    sizes,
+    toppings: 1,
+    getAvailableSizes() {
+        return this.sizes;
+    }
+};
+}
+
+picca = createPicca('Peperoni', ['small', 'medium'])
+picca.toppings = 1;
+
+picca[1] = 'knd'
+
+
