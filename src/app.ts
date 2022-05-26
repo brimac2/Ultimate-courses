@@ -140,3 +140,29 @@ const allSumm = sumOrderr(20);
 console.log(`Total sum: ${allSum}`);
 
 // Typed functions
+let sumOrderrr: (price: number, quantity?: number) => number;
+sumOrderrr = (x, y = 1) => x * y;
+const ssum = sumOrderrr(26);
+console.log(`Total summmm: ${ssum}`);
+
+// Object types
+let pica: {name: string, price: number; getName(): string } = {
+    name: 'plain old pica',
+    price: 20,
+    getName(){
+        return pica.name;
+    }
+}
+console.log(pica.getName())
+
+// Array types and generics
+const sizes = ['small', 'medium', 'large'];
+
+let size: Array <number>;
+size = [1, 2, 3];
+
+// Tuple Types for array
+let piccca: [string, number, boolean]
+piccca = ['peperoni', 20, true];
+
+
