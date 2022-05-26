@@ -166,3 +166,15 @@ let piccca: [string, number, boolean]
 piccca = ['peperoni', 20, true];
 
 
+// Type assertion in JSON string
+type Piiza = { name: string, toppings: number};
+
+const piiza: Piiza = {name: 'Inferno', toppings: 5}
+
+const serialized = JSON.stringify(piiza);
+
+function getNameFromJSON(obj: string) {
+    return (<Piiza>JSON.parse(obj) as Piiza).name
+}
+
+getNameFromJSON(serialized);
