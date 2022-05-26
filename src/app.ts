@@ -53,6 +53,25 @@ const order = {
 const finalOrder = {...order}
 console.log(finalOrder)
 
+// Destructuring array, prasome propercio is objekto
+const pizzzza = {
+    name: 'Hawaii',
+    toppings: ['pinapple'],
+};
+
+function orderPizza({name: pizzaName, toppings: pizzaToppings}) {
+    return {pizzaName, pizzaToppings};
+}
+
+const {pizzaName} = orderPizza(pizzzza);
+const toppings = ['pinapple', 'bacon', 'chilli'];
+const [first, second, third] = toppings;
+
+function logToppings ([first, second, third]: any) {
+    console.log(first, second, third)
+}
+
+logToppings(toppings);
 
 
 // Number tipas ir panaudijimas funkcijoje
@@ -91,3 +110,33 @@ console.log(`You are entitled to a discount`)
 } else {
     console.log(`Order more than 3 pizzzas`)
 }
+
+// Union ir literal types
+let pizzaSize: string = 'small';
+
+function selectSize(size: 'small' | 'medium' | 'large'):void {
+    pizzaSize = size;
+}
+
+selectSize('medium');
+console.log(`Pizza size: ${pizzaSize}`)
+
+// Function types
+let sumOrder: (price: number, quantity: number) => number;
+sumOrder = (x, y) => x * y;
+
+const allSum = sumOrder(20, 3);
+console.log(`Total sum: ${allSum}`);
+
+// Make optional arguments in function
+let sumOrderr: (price: number, quantity?: number) => number;
+sumOrderr = (x, y) => {
+    if (y){
+        return x * y;
+    } 
+    return x;
+}
+const allSumm = sumOrderr(20);
+console.log(`Total sum: ${allSum}`);
+
+// Typed functions
