@@ -210,7 +210,93 @@ function createPicca(name: string, sizes: string[]): Picca {
 
 picca = createPicca('Peperoni', ['small', 'medium'])
 picca.toppings = 1;
-
 picca[1] = 'knd'
+
+
+// Classes, constructors
+class Pizca2{
+
+public toppings: string[] = [];
+
+    constructor(readonly name: string){}
+
+    public addTopping(topping: string) {
+        this.toppings.push(topping);
+    }
+}
+
+
+// senas budas rasyt klases, konstruktorius, naudoti geriau kaip virsuje
+function Pizca(name: string){
+    this.name = name
+    this.toppings = [];
+}
+
+Pizca.prototype.addTopping = function addTopping(topping: string){
+    this.toppings.push(topping);
+}
+
+const pizca = new Pizca('Peperoni');
+pizca.addTopping('peperoni')
+console.log(pizca.name)
+
+// Setters and getters
+class Sizes {
+    constructor( public sizes: string[]){}
+    
+    set availableSizes(sizes: string[]) {
+        this.sizes = sizes;
+    }
+
+    get availableSizes(){
+        return this.sizes;
+    }
+}
+const siizes = new Sizes(['small', 'medium'])
+
+// invoke getter
+console.log(siizes.availableSizes);
+// invoke setter
+siizes.availableSizes = ['medium', 'large']
+console.log(siizes.availableSizes)
+
+// Inheritance
+class Pizza extends Sizes {
+    public toppings: string[] = [];
+    
+    constructor(readonly name: string, public sizes: string[]) {
+        super(sizes);
+    }
+
+    public addTopping(topping:string) {
+        this.toppings.push(topping);
+    }
+
+    public updateSizes(sizes: string[]) {
+        this.sizes = sizes
+    }
+}
+
+const pizzca = new Pizza ('Peperoni', ['ksks']);
+console.log(pizzca.availableSizes)
+pizzca.updateSizes(['large']);
+console.log(pizzca.availableSizes)
+// Abstract class
+abstract class Flowers {
+    constructor(public flowers: string[]) {}
+}
+
+// Static properties/methods
+const date = +new Date();
+console.log(date);
+
+class Coupon {
+    static allowed = ['Peperoni', 'Blazing Inferno'];
+    static create (percentage: number) {
+        return `Pizza_restaurant_${percentage}`;
+    }
+}
+
+console.log(Coupon.create(35))
 
 
