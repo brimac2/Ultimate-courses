@@ -1,3 +1,4 @@
+import { uppercase } from "./formatter";
 
 // Array pvz:
 const pizzas = [
@@ -300,3 +301,55 @@ class Coupon {
 console.log(Coupon.create(35))
 
 
+// Refresh Typescript (classes, spread operators, arrow functions, immutability)
+var mylist = new ShoppingList();
+
+function ShoppingList() {
+    this.groceries = [];
+}
+ShoppingList.prototype.addItem = function(item: string) {
+    this.groceries = this.groceries.concat([item]);
+};
+
+ShoppingList.prototype.removeItem = function(item: string) {
+    this.groceries = this.groceries.filter(function(grocery: string){
+return item !== grocery;
+});
+}
+
+mylist.addItem('Banana');
+mylist.addItem('Apple');
+console.log(mylist.groceries);
+
+mylist.removeItem('Banana');
+console.log(mylist.groceries);
+
+
+
+
+class ShoppingList2 {
+    groceries: string[];
+    constructor(){
+        this.groceries = [];
+    }
+    addItem(item) {
+        this.groceries = [...this.groceries, item]
+    }
+    removeItem(item) {
+        this.groceries = this.groceries.filter((grocery) => item !== grocery);
+    }
+    }
+
+const myNewList = new ShoppingList2();
+
+myNewList.addItem('Pear');
+myNewList.addItem('Apple');
+
+console.log(myNewList.groceries)
+
+myNewList.removeItem('Pear')
+console.log(myNewList.groceries)
+
+// importuoti metoda i kita .ts klase, pvz:
+let myName: string = 'Brigita';
+console.log(uppercase(myName));
